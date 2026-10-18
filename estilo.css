@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Boa prática recomendada */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(181, 221, 221);
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabeçalho { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 15px 25px; 
+  background-color: #e9d207;
+} 
+
+.cabecalho-link {
+    color: #0e0d0d;
+    text-decoration: none;
+}
+
+h1 {
+    color: #0e0d0d;
+    font-size: 25px;
+}
+
+/* --- CONFIGURAÇÃO DOS FLASHCARDS --- */
+
+/* Container principal do cartão (define a perspectiva 3D) */
+.cartao {
+    width: 300px;
+    height: 380px;
+    perspective: 1000px; /* Profundidade 3D */
+    margin: 20px;
+}
+
+/* Elemento interno que faz a rotação de 180 graus */
+.cartao-interno {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Ao passar o mouse, o cartão interno vira */
+.cartao:hover .cartao-interno {
+    transform: rotateY(180deg);
+}
+
+/* Estilos compartilhados da frente e do verso */
+.cartao-frente, .cartao-verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Esconde a parte de trás quando virado */
+    backface-visibility: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+/* Estilo específico do Verso (já rotacionado em 180deg) */
+.cartao-verso {
+    background-color: #e0f7fa; /* Cor de fundo diferente para o verso, se quiser */
+    transform: rotateY(180deg);
+}
+
+/* Estilização para as imagens e textos dentro dos cartões */
+.cartao img {
+    /* Em vez de fixar a altura, definimos a largura total do cartão */
+    width: 100%;
+    
+    /* A altura é automática para manter a proporção original da foto */
+    height: auto;
+    
+    /* Esta propriedade garante que a foto inteira caiba sem distorção ou corte */
+    object-fit: contain;
+    
+    /* Adicionamos uma altura máxima para que a foto não fique gigante e quebre o layout */
+    max-height: 250px;
+    
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #e9d207;
+    padding: 15px 25px; 
+    color: #0a0a0a;
+    text-align: center;
+}
